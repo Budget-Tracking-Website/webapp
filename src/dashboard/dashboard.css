@@ -1,0 +1,187 @@
+.dashboard-container {
+    display: flex;
+    position: relative; /* Set the container as relative for positioning children */
+  }
+  
+  .navigation-links {
+    position: fixed; /* Fixed positioning for small screens */
+    top: 0;
+    left: 0; /* Position the panel on the left side */
+    background-color: #f0f0f0; /* Background color for the navigation panel */
+    width: 250px; /* Fixed width of the navigation panel */
+    height: 100%; /* Set height to full container height */
+    z-index: 2; /* Ensure navigation panel appears over the graphs */
+    transition: transform 0.3s ease-in-out; /* Add transition effect for smooth animation */
+    transform: translateX(-100%); /* Initially hide the navigation panel */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navigation-links.show {
+    transform: translateX(0); /* Show navigation panel when 'show' class is added */
+  }
+  
+  .left-panel {
+    width: 250px; /* Fixed width for the left panel */
+    padding: 20px;
+  }
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .list li i {
+    margin-right: 10px;
+  }
+  
+  .list li:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
+  .right-panel {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .balance-section,
+  .budget-section,
+  .expenses-section {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .heading-container {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .heading-container h2 {
+    margin: 0;
+  }
+  
+  .top-right {
+    position: absolute; /* Fixed positioning for large screens */
+    top: 10px;
+    right: 10px;
+  }
+  
+  .top-right p {
+    margin: 0;
+  }
+  
+  .total-budget-expenses {
+    margin-top: 10px; /* Add margin between heading and total budget/expenses */
+  }
+  
+  .total-budget-expenses p {
+    margin: 5px 0; /* Add margin between total budget and expenses */
+  }
+  
+  /* Media queries for responsiveness */
+  .graphs{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #barChart{
+    max-width: 100%;
+    max-height: 50vh
+  }
+  #pieChart{
+    max-width: 100%;
+    max-height: 30vh;
+  }
+  .right-panel h1{
+    width: 100%;
+    text-align: center;
+  }
+  @media only screen and (min-width: 769px) {
+    .navigation-links {
+      position: fixed; /* Fixed positioning for large screens */
+      transform: translateX(0); /* Show navigation panel */
+      left: 0; /* Reset left positioning */
+    }
+    
+    .right-panel {
+      margin-left: 250px; /* Adjust right panel margin to accommodate navigation panel */
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+    .right-panel h1{
+      /* background-color: grey; */
+      padding: 0px;
+      margin-top: 10px;
+      width: 100%;
+      text-align: center;
+    }
+    .side-panel-button {
+      display: none; /* Hide side panel button for larger screens */
+    }
+    .graphs{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #barChart{
+      max-width: 60%;
+      max-height: 100%
+    }
+    #pieChart{
+      max-width: 40%;
+      max-height: 100%;
+    }
+
+  }
+  
+ .iexn{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  /* background-color: grey; */
+  justify-content: space-between;
+  /* padding: 50px; */
+  padding-top: 50px;
+  padding-bottom: 60px;
+ }
+ .income{
+  padding-top: 15px;
+  color: grey;
+  width: 30%;
+  text-align: center;
+  font-size: large;
+  box-shadow: 2px 0 2px rgba(88, 88, 88, 0.2);
+ }
+ .expenditure{
+  padding-top: 15px;
+  color: grey;
+  width: 30%;
+  text-align: center;
+  font-size: large;
+  box-shadow: 2px 0 2px rgba(88, 88, 88, 0.2);
+ }
+ .net{
+  padding-top: 15px;
+  color: grey;
+  width: 30%;
+  text-align: center;
+  font-size: large;
+  box-shadow: 2px 0 2px rgba(88, 88, 88, 0.2);
+ }
+  
+    
+.iexncontent{
+  color: black;
+  padding-top: 10px;
+  font-weight: 500;
+}
