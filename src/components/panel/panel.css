@@ -1,0 +1,44 @@
+.options-panel {
+  width: 20%;
+  background: var(--Neutral-10, #f3f3f3);
+  padding: 1vmax 0 1vmax 2vmax;
+  height: 100vh;
+}
+
+@media (max-width: 576px) {
+  .options-panel {
+    width: 100%;
+    height: fit-content;
+  }
+}
+.option {
+  color: #757575;
+  font-family: Open Sans;
+  font-size: 1.15vmax;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 1.5rem */
+  letter-spacing: 0.03125rem;
+  padding-top: 1.5vmax;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5vmax;
+}
+
+.svg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2vmax;
+  height: auto;
+}
+
+.option:hover {
+  color: #4A85F6;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.option:hover>.svg-container path {
+  fill: #4A85F6;
+}
