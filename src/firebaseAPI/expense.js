@@ -27,7 +27,39 @@ class Expenses {
         });
     }
 
-
+    modifyTotal(uid, type, amount) {
+        console.log(uid, type, amount);
+        return new Promise((resolve, reject) => {
+            let expensesRef = ref(this.db, `userdata/${uid}`);
+            let rref = ref(this.db, `userdata/${uid}/credited`);
+            let fg = child(expensesRef, "credited");
+            if (type === "debited") {
+                fg = child(expensesRef, "debited");
+                rref = ref(this.db, `userdata/${uid}/debited`);
+            }
+            try {
+                get(fg).then((snapshot) => {
+                    let am = snapshot.val() || 0; // Initialize am to 0 if snapshot value is null
+                    const updatedAmount = am + amount;
+                    set(rref, updatedAmount)
+                        .then(() => {
+                            resolve();
+                        })
+                        .catch((error) => {
+                            reject(error);
+                        });
+                }).catch((error) => {
+                    reject(error);
+                });
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
+    
+    
+    
+    
     addExpense(type, amount, category, remark, ouid) {
         const uid = this.auth.getUid();
         const expenseMap = {
@@ -49,7 +81,11 @@ class Expenses {
             const pushed = push(expensesRef);
             set(pushed, expenseMap)
                 .then(() => {
-                    resolve();
+                    this.modifyTotal(expenseMap['expenseBy'], type, amount).then(() => {
+                        resolve();
+                    }).catch((e) => {
+                        reject(e);
+                    });
                 })
                 .catch((error) => {
                     reject(error);
@@ -79,8 +115,10 @@ class Expenses {
             });
         });
     }
-    
-    
+
+    getAllTransactions(){
+
+    }
 }
 
 
