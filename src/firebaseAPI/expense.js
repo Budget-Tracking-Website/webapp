@@ -40,8 +40,12 @@ class Expenses {
             try {
                 get(fg).then((snapshot) => {
                     let am = snapshot.val() || 0; // Initialize am to 0 if snapshot value is null
-                    const updatedAmount = am + amount;
-                    set(rref, updatedAmount)
+                    const ss = parseInt(am, 10);
+                    var updatedAmount = ss + parseInt(amount, 10);
+                    // Convert updatedAmount to a number
+                    const numericAmount = parseInt(updatedAmount, 10);
+                    console.log(am, ss, amount, updatedAmount, numericAmount);
+                    set(rref, numericAmount)
                         .then(() => {
                             resolve();
                         })
@@ -57,9 +61,9 @@ class Expenses {
         });
     }
     
-    
-    
-    
+
+
+
     addExpense(type, amount, category, remark, ouid) {
         const uid = this.auth.getUid();
         const expenseMap = {
@@ -116,9 +120,55 @@ class Expenses {
         });
     }
 
-    getAllTransactions(){
-
+    getAllTransactions() {
+        return new Promise((resolve, reject) => {
+            const dbRef = ref(this.db);
+            const userId = this.auth.getUid();
+            get(child(dbRef, `expenses/${userId}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const transactions = snapshot.val();
+                    const transactionList = Object.keys(transactions).map(key => ({
+                        id: key,
+                        ...transactions[key]
+                    }));
+                    resolve(transactionList);
+                } else {
+                    resolve([]); // Return an empty array if no data available
+                }
+            }).catch((error) => {
+                reject(error);
+            })
+        })
     }
+
+    getUserSaving() {
+        return new Promise((res, reject) => {            
+            const uid = this.auth.getUid();
+            let expensesRef = ref(this.db, `userdata/${uid}`);
+            let fg = child(expensesRef, "credited");
+            get(fg).then((snapshot) => {
+                let am = snapshot.val() || 0;
+                res(am);
+            }).catch((e) => {
+                reject(e);
+            })
+        })
+    }
+
+    getUserExpense() {
+        return new Promise((res, reject) => {            
+            const uid = this.auth.getUid();
+            let expensesRef = ref(this.db, `userdata/${uid}`);
+            let fg = child(expensesRef, "debited");
+            get(fg).then((snapshot) => {
+                let am = snapshot.val() || 0;
+                res(am);
+            }).catch((e) => {
+                reject(e);
+            })
+        })
+    }
+    
 }
 
 
