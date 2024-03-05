@@ -14,6 +14,7 @@ import Dashboard from './dashboard/index.jsx';
 import Signup from './authentication/signup/index.jsx';
 
 import Authentication from './firebaseAPI/authentication.js';
+import Expense from './expense/index.jsx';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
         <Routes>
           <Route path="/" element={<UnauthorizedRoute element={<Login />} />} />
           <Route path="/dashboard" element={<AuthorizedRoute element={<Dashboard />} />} />
+          <Route path="/expense" element={<AuthorizedRoute element={<Expense />} />} />
           <Route path="/signup" element={<UnauthorizedRoute element={<Signup />} />} />
         </Routes>
       </BrowserRouter>
