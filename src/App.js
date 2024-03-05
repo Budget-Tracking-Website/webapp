@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop.js';
 import Loading from './components/loading/index.jsx';
 import Login from './authentication/login/index.jsx';
 import Dashboard from './dashboard/index.jsx';
+import Signup from './authentication/signup/index.jsx';
 
 import Authentication from './firebaseAPI/authentication.js';
 
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<UnauthorizedRoute element={<Login />} />} />
           <Route path="/dashboard" element={<AuthorizedRoute element={<Dashboard />} />} />
+          <Route path="/signup" element={<UnauthorizedRoute element={<Signup />} />} />
         </Routes>
       </BrowserRouter>
     </div>

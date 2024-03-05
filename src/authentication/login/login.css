@@ -65,3 +65,45 @@
     color: red;
     font-size: 1vmax;
 }
+
+@media (max-width: 576px) {
+    .window {
+        border-radius: 1rem;
+        border: 1px solid #EFF4FA;
+        background: #FFF;
+        padding: 2vmax;
+        font-size: 2vmax;
+    }
+    .logo {
+        width: 2.2vmax;
+        height: auto;
+    }
+    
+    .input {
+        all: unset;
+        border-radius: 5px;
+        background: #EFF4FA;
+        padding: 1vmax 1vmax;
+        font-size: 2vmax;
+        width: 60vmin;
+        margin: 1vmax 0;
+    }
+    .primary-button {
+        all: unset;
+        background: #4A85F6;
+        filter: drop-shadow(2.5px 4.3px 10px rgba(0, 0, 0, 0.10));
+        cursor: pointer;
+        padding: 1vmax 3vmax;
+        border-radius: 5px;
+        color: #FFF;
+        font-family: Open Sans;
+        font-size: 2vmax;
+        margin: 1vmax 0;
+        font-style: normal;
+        font-weight: 600;
+    }
+    .description {
+        font-size: 2vmax;
+        color: #222B45;
+    }
+}
