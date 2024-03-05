@@ -1,6 +1,6 @@
 .custom-loading {
-    width: fit-conten;
-    height: fit-content;
+    width: 40%;
+    height: 40%;
     padding: 0.5vmax 1vmax;
     display: flex;
     flex-direction: column;
