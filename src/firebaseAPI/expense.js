@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "./firebaseConfig";
-import { getDatabase, ref, child, get, push, serverTimestamp, set, orderByChild } from "firebase/database";
+import { getDatabase, ref, child, get, push, serverTimestamp, set, orderByChild, orderByKey, orderByValue } from "firebase/database";
 import Authentication from "./authentication";
 
 class Expenses {
@@ -60,20 +60,27 @@ class Expenses {
     getUid(email) {
         return new Promise((resolve, reject) => {
             const dbRef = ref(this.db);
-            const query = orderByChild(child(dbRef, 'users')).equalTo(email);
-            get(query).then((snapshot) => {
+            const usersRef = child(dbRef, 'users');
+            get(usersRef).then((snapshot) => {
                 if (snapshot.exists()) {
                     snapshot.forEach((childSnapshot) => {
-                        resolve(childSnapshot.key); // Return the key if email matches
+                        if (childSnapshot.val() === email) {
+                            resolve(childSnapshot.key); // Return the key if email matches
+                        }
                     });
+                    // If no matching email found after iterating through all children
+                    resolve(null);
                 } else {
-                    resolve(null); // If no matching email found
+                    // If no data exists under 'users'
+                    resolve(null);
                 }
             }).catch((error) => {
                 reject(error);
             });
         });
     }
+    
+    
 }
 
 

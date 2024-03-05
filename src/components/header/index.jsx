@@ -1,17 +1,25 @@
 import React from 'react';
 import Profile from '../../assets/logos/profile.svg'
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom for navigation
+import Add from '../../assets/logos/add.svg'
+import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom for navigation
 
-function Header({title}) {
-    
+function Header({ title }) {
+
     const handleProfileClick = () => {
         console.log("Profile photo clicked. Navigating to profile page...");
     };
+    const handleProfileClick1 = () => {
+        return navigate('/expense');
+    };
+    
+    let navigate = useNavigate();
 
     return (
         <header style={headerStyle}>
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             {/* Profile photo with onClick event handler */}
+            <div style={{flexGrow:'1'}}></div>
+            <img src={Add} alt="Add" style={profileStyle1} onClick={handleProfileClick1} />
             <img src={Profile} alt="Profile" style={profileStyle} onClick={handleProfileClick} />
         </header>
     );
@@ -19,7 +27,7 @@ function Header({title}) {
 
 // Inline styles for header and profile photo
 const headerStyle = {
-    background: 'rgb(251 184 184)',
+    background: '#f3f3f3',
     color: '#000',
     textAlign: 'center',
     padding: '10px',
@@ -31,8 +39,17 @@ const headerStyle = {
 
 const profileStyle = {
     height: '90%',
+    width: '7vh',
     borderRadius: '50%', // Makes the image circular
     cursor: 'pointer', // Change cursor to pointer on hover
+    position: 'relative'
+};
+const profileStyle1 = {
+    height: '80%',
+    width: '7vh',
+    borderRadius: '50%', // Makes the image circular
+    cursor: 'pointer', // Change cursor to pointer on hover
+    position: 'relative'
 };
 
 export default Header;

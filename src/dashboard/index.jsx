@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import './dashboard.css';
-import Leftpanel from './leftpanel.js';
+import Leftpanel from '../components/panel/index.js';
+import Header from '../components/header/index.jsx';
+import ScrollToTop from '../components/ScrollToTop.js';
 
 const DashboardPage = () => {
     const [categories, setCategories] = useState([
@@ -157,53 +159,47 @@ const DashboardPage = () => {
     };
 
     return (
-        <div className="dashboard-container">
-            <div className="top-right">
-                <button className="side-panel-button" onClick={toggleNavigation}>
-                    {showNavigation ? 'Hide Navigation' : 'Show Navigation'}
-                </button>
-            </div>
-            <div className={`navigation-links ${showNavigation ? 'show' : ''}`}>
+        <div>
+            <Header title={"Dashboard"} />
+            <div className='main'>
                 <Leftpanel />
-            </div>
-            <div className="right-panel">
-                <h1>Dashboard</h1>
-                {/* <div className="total-budget-expenses">
-                    <p ref={totalBudgetRef}></p>
-                    <p ref={totalExpensesRef}></p>
-                </div> */}
-                <div className='iexn'>
-                    <div className='income'>
-                        <div className='iexnhd'>
-                            Income
+                <div className='right-panel'>
+                    <div style={{fontSize: "1.6vmax"}}>Expenditure</div>
+                    <div className='iexn'>
+                        <div className='income'>
+                            <div className='iexnhd'>
+                                Income
+                            </div>
+                            <div className='iexncontent'>
+                                INR 5000
+                            </div>
                         </div>
-                        <div className='iexncontent'>
-                            INR 5000
+                        <div className='expenditure'>
+                            <div className='iexnhd'>
+                                Expenditure
+                            </div>
+                            <div className='iexncontent'>
+                                INR 3000
+                            </div>
                         </div>
-                    </div>
-                    <div className='expenditure'>
-                    <div className='iexnhd'>
-                            Expenditure
-                        </div>
-                        <div className='iexncontent'>
-                            INR 3000
-                        </div>
-                    </div>
-                    <div className='net'>
-                    <div className='iexnhd'>
-                            Net
-                        </div>
-                        <div className='iexncontent'>
-                            INR 2000
+                        <div className='net'>
+                            <div className='iexnhd'>
+                                Net
+                            </div>
+                            <div className='iexncontent'>
+                                INR 2000
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='graphs'>
-                    <canvas ref={chartRef} id="barChart"  ></canvas>
-                    <canvas ref={pieChartRef} id="pieChart"  ></canvas>
-                </div>
+                    <div style={{fontSize: "1.6vmax", width:"50%"}}>Category wise expenses</div>
+                    <div className='graphs'>
+                        <canvas ref={chartRef} id="barChart"  ></canvas>
+                        <canvas ref={pieChartRef} id="pieChart"  ></canvas>
+                    </div>
 
+                </div>
             </div>
+            <ScrollToTop/>
         </div>
     );
 };
