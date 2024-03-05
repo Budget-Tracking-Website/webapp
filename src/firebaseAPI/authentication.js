@@ -1,5 +1,6 @@
 import { getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 import { toast } from "react-toastify";
 
 class Authentication {
@@ -22,6 +23,10 @@ class Authentication {
 
     getIsEmailVerified() {
         return this.user ? this.user.emailVerified : null;
+    }
+
+    getUid() {
+        return this.user ? this.user.uid : null;
     }
 
     logout() {
@@ -57,18 +62,23 @@ class Authentication {
                     this.user = userCredential.user;
                     this.isSignedIn = !!this.user;
                     this.sendVerificationEmail().then(() => {
-                        this.logout().then(() => {
-                            toast.info("Account created, verify your email using link sent on your email");
-                            resolve();
-                        }).catch((e) => {
-                            reject(e);
-                        });
+                        const db = getDatabase();
+                        set(ref(db, `users/${this.user.uid}`), email)
+                            .then(() => {
+                                this.logout().then(() => {
+                                    toast.info("Account created, verify your email using link sent on your email");
+                                    resolve();
+                                }).catch((e) => {
+                                    reject(e);
+                                });
+                            }).catch((e) => {
+                                reject(e);
+                            });
                     }).catch((e) => {
                         reject(e);
-                    })
+                    });
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
                     const errorMessage = error.message;
                     reject(errorMessage);
                 });
