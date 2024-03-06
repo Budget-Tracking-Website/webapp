@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import XLSX from 'xlsx'; // Import XLSX library
+// import XLSX from 'xlsx'; // Import XLSX library
 import './transactions.css';
 
 import Expenses from '../firebaseAPI/expense';
@@ -86,10 +86,10 @@ function Transactions() {
     );
 
     function exportToExcel() {
-        const wb = XLSX.utils.book_new();
-        const ws = XLSX.utils.json_to_sheet(allT);
-        XLSX.utils.book_append_sheet(wb, ws, 'Transactions');
-        XLSX.writeFile(wb, 'transactions.xlsx');
+        // const wb = XLSX.utils.book_new();
+        // const ws = XLSX.utils.json_to_sheet(allT);
+        // XLSX.utils.book_append_sheet(wb, ws, 'Transactions');
+        // XLSX.writeFile(wb, 'transactions.xlsx');
     }
 }
 
