@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, updateProfile, updatePassword, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { toast } from "react-toastify";
 
@@ -29,6 +29,17 @@ class Authentication {
         return this.user ? this.user.uid : null;
     }
 
+    sendPasswordResetEmail(em) {
+        return new Promise((res, reject) => {
+            sendPasswordResetEmail(this.auth, em)
+                .then(() => {
+                    res();
+                })
+                .catch((error) => {
+                    reject(error.message);
+                });
+        });
+    }
     logout() {
         return new Promise((resolve, reject) => {
             signOut(this.auth)
@@ -55,12 +66,23 @@ class Authentication {
                 });
         })
     }
-    createUser(email, password) {
+    createUser(email, password, name) {
         return new Promise((resolve, reject) => {
             createUserWithEmailAndPassword(this.auth, email, password)
-                .then((userCredential) => {
+                .then(async (userCredential) => {
                     this.user = userCredential.user;
                     this.isSignedIn = !!this.user;
+                    try {
+                        const auth = getAuth();
+                        await updateProfile(auth.currentUser, {
+                            displayName: name,
+                        });
+                        // Profile updated!
+                        // Further actions after profile update...
+                    } catch (error) {
+                        // An error occurred
+                        console.error("Error updating profile:", error);
+                    }
                     this.sendVerificationEmail().then(() => {
                         const db = getDatabase();
                         set(ref(db, `users/${this.user.uid}`), email)

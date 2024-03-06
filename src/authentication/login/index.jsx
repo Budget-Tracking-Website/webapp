@@ -62,6 +62,18 @@ function Login() {
         }
     }
 
+    const handleForgotPassword = (e) => {
+        e.preventDefault();
+        if(formData.email.length>0){
+            auth.sendPasswordResetEmail(formData.email).then(() => {
+                toast.success("Password reset email sent!! change your password using it.");
+            })
+            .catch((e) => console.error(e));
+        }
+        else{
+            toast.error("please enter your email to retreive password");
+        }
+    }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -90,10 +102,14 @@ function Login() {
                 {errors.password && <div className="error">{errors.password}</div>}
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button className="primary-button" type="submit">
+                    <button className="primary-button" type="submit" style={{ backgroundColor: 'blue', width: '50%' }}>
                         Sign in
                     </button>
+                    <button className="error-button" style={{ backgroundColor: 'red', width: '50%', fontSize: 'small' }} onClick={handleForgotPassword}>
+                        Forgot Password
+                    </button>
                 </div>
+
             </form>
             <p className="description">
                 Don't have an account? <Link to="/signup">Register here</Link>

@@ -53,12 +53,30 @@
     filter: drop-shadow(2.5px 4.3px 10px rgba(0, 0, 0, 0.10));
     cursor: pointer;
     padding: 0.5vmax 1.5vmax;
+    width: 40%;
     border-radius: 5px;
     color: #FFF;
     font-family: Open Sans;
     font-size: 1.05vmax;
     font-style: normal;
     font-weight: 600;
+    margin: 5px;
+}
+
+.error-button {
+    all: unset;
+    background: #4A85F6;
+    filter: drop-shadow(2.5px 4.3px 10px rgba(0, 0, 0, 0.10));
+    cursor: pointer;
+    padding: 0.5vmax 1.5vmax;
+    border-radius: 5px;
+    width: 40%;
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 1.05vmax;
+    font-style: normal;
+    font-weight: 600;
+    margin: 5px;
 }
 
 .error {
@@ -101,6 +119,22 @@
         margin: 1vmax 0;
         font-style: normal;
         font-weight: 600;
+        margin: 5px;
+    }
+    .error-button {
+        all: unset;
+        background: #4A85F6;
+        filter: drop-shadow(2.5px 4.3px 10px rgba(0, 0, 0, 0.10));
+        cursor: pointer;
+        padding: 1vmax 3vmax;
+        border-radius: 5px;
+        color: #FFF;
+        font-family: Open Sans;
+        font-size: 2vmax;
+        margin: 1vmax 0;
+        font-style: normal;
+        font-weight: 600;
+        margin: 5px;
     }
     .description {
         font-size: 2vmax;

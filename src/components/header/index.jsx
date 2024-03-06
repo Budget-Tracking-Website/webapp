@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-
 function Header({ title }) {
 
     const handleProfileClick = () => {
-        console.log("Profile photo clicked. Navigating to profile page...");
+        return navigate('/account');
     };
     const handleProfileClick1 = () => {
         return navigate('/expense');
