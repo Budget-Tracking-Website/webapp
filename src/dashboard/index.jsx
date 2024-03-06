@@ -188,7 +188,7 @@ const DashboardPage = () => {
     
 
     return (
-        <div>
+        <div className='dashboard'>
             <Header title={"Dashboard"} />
             <div className='main'>
                 <Leftpanel />

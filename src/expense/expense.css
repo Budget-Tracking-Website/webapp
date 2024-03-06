@@ -1,8 +1,22 @@
 /* expense.css */
+.dashboard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
 
 /* Style for the form container */
 .form-container {
     width: 40%;
+    height: fit-content;
     margin: 1vmax auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -25,20 +39,30 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box;
+    /* Ensure padding and border are included in the width */
     margin-bottom: 10px;
     margin-top: 6px;
     font-size: 1vmax;
 }
 
 @media (max-width: 576px) {
+
+    .main {
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
     select {
         font-size: 2vmax;
     }
+
     input[type="text"],
     input[type="number"] {
-        font-size: 2vmax; 
+        font-size: 2vmax;
     }
+
     .form-container {
         width: 85%;
     }
@@ -47,7 +71,8 @@ select {
 
 /* Style for the submit button */
 button[type="submit"] {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
+    /* Green */
     width: 100%;
     color: white;
     padding: 10px 20px;

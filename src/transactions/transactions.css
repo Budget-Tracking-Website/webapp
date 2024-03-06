@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.total {
+    font-weight: bold;
+}
+
+.dashboard {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#top {
+    background-color: #999;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5%;
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+}
+
+.monthlyTransaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    /* Light gray background color */
+    padding: 10px;
+    /* margin-bottom: 1px; */
+    border-radius: 5px;
+}
+
+@media (max-width: 576px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .button {
+
+        width: 40%;
+    }
+}
+
+.amount {
+    width: 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.date {
+    color: #999;
+    max-width: 50%;
+    padding-bottom: 0.5%;
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+}
+
+.positive-amount {
+    color: green;
+}
+
+.negative-amount {
+    color: red;
+}
+
+/* css for export button */
+
+/* Your CSS styles here */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 10px;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button+.button {
+    margin-left: 20%;
+    /* Set the distance between buttons here */
+}

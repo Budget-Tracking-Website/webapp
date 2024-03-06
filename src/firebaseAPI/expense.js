@@ -40,10 +40,10 @@ class Expenses {
             try {
                 get(fg).then((snapshot) => {
                     let am = snapshot.val() || 0; // Initialize am to 0 if snapshot value is null
-                    const ss = parseInt(am, 10);
-                    var updatedAmount = ss + parseInt(amount, 10);
+                    const ss = parseFloat(am);
+                    var updatedAmount = ss + parseFloat(amount);
                     // Convert updatedAmount to a number
-                    const numericAmount = parseInt(updatedAmount, 10);
+                    const numericAmount = parseFloat(updatedAmount);
                     console.log(am, ss, amount, updatedAmount, numericAmount);
                     set(rref, numericAmount)
                         .then(() => {

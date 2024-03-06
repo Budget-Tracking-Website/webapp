@@ -44,6 +44,7 @@ function Signup() {
         if (validateForm()) {
             console.log("Form submitted:", formData);
             auth.createUser(formData.email, formData.password).then(() => {
+                toast.success("Verify your email and login again");
                 return navigate("/");
             }).catch((e) => {
                 toast.error(e);

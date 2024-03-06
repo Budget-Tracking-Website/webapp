@@ -92,9 +92,9 @@ function Expense() {
     };
 
     return (
-        <div>
+        <div className='dashboard'>
             <Header title={"Add Expense"} />
-            <div style={{ display: 'flex' }}>
+            <div className='main'>
                 <Leftpanel />
                 <form className='form-container' onSubmit={handleSubmit}>
                     <label>

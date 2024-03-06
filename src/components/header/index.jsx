@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-
 function Header({ title }) {
 
     const handleProfileClick = () => {
-        console.log("Profile photo clicked. Navigating to profile page...");
+        return navigate('/account');
     };
     const handleProfileClick1 = () => {
         return navigate('/expense');
@@ -27,7 +27,7 @@ function Header({ title }) {
 
 // Inline styles for header and profile photo
 const headerStyle = {
-    background: '#f3f3f3',
+    background: '#eeeeee',
     color: '#000',
     textAlign: 'center',
     padding: '10px',

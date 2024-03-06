@@ -1,6 +1,6 @@
 .options-panel {
   width: 20%;
-  background: var(--Neutral-10, #f3f3f3);
+  background: var(--Neutral-10, #eeeeee);
   padding: 1vmax 0 1vmax 2vmax;
   height: 100vh;
 }
@@ -14,7 +14,6 @@
 .option {
   color: #757575;
   font-family: Open Sans;
-  font-size: 1.15vmax;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 1.5rem */

@@ -1,12 +1,17 @@
-.dashboard-container {
-  display: flex;
-  position: relative;
+.dashboard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
 }
 
 .main {
   display: flex;
   flex-direction: row;
 }
+
 
 .graphs {
   display: flex;
@@ -27,6 +32,7 @@
   .main {
     flex-direction: column;
     overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   .graphs {
