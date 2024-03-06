@@ -27,7 +27,7 @@ function Header({ title }) {
 
 // Inline styles for header and profile photo
 const headerStyle = {
-    background: '#f3f3f3',
+    background: '#eeeeee',
     color: '#000',
     textAlign: 'center',
     padding: '10px',
