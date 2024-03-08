@@ -34,7 +34,8 @@ function Transactions() {
                 if (transaction.type === "debited")
                     acc[month].total -= parseFloat(transaction.amount);
                 else
-                acc[month].total += parseFloat(transaction.amount);
+                    acc[month].total += parseFloat(transaction.amount);
+                acc[month].transactions.sort((a, b) => b.time - a.time);
                 return acc;
             }, {});
 
